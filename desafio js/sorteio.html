@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sorteador de numeros</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <row id="tela">
+      <p id="sorted">0</p>
+      <input id="n1" />
+      <input id="n2" />
+      <button id="sort">SORTEAR</button>
+      <p id="msg"></p>
+    </row>
+    <script>
+      function gerarNumeroAleatorio(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      const n1 = document.getElementById('n1');
+      const n2 = document.getElementById('n2');
+      const sort = document.getElementById('sort');
+      const sorted = document.getElementById('sorted');
+      const msg = document.getElementById('msg');
+
+      sort.addEventListener('click', function () {
+        const numeroMinimo = parseInt(n1.value);
+        const numeroMaximo = parseInt(n2.value);
+
+        const numeroEscolhido = gerarNumeroAleatorio(
+          numeroMinimo,
+          numeroMaximo
+        );
+
+        if (isNaN(numeroMinimo) || isNaN(numeroMaximo)) {
+          msg.textContent = 'Por favor, digite apenas números';
+        } else {
+          sorted.textContent = numeroEscolhido;
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contador de Cliques</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <div id="mostrador">
+      <p><span id="contador" class="verde">0</span></p>
+      <button id="botao">CONTAR</button>
+    </div>
+    <script>
+      let contador = 0;
+      const botao = document.getElementById('botao');
+      const contadorElement = document.getElementById('contador');
+
+      botao.addEventListener('click', () => {
+        contador++;
+        contadorElement.textContent = contador;
+
+        if (contador <= 100) {
+          contadorElement.classList = 'verde';
+        } else if (contador > 100 && contador <= 150) {
+          contadorElement.classList = 'amarelo';
+        } else {
+          contadorElement.classList = 'vermelho';
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conversor de Temperatura</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <row id="temp">
+      <div id="cel">
+        <label for="celsius">°C</label>
+        <input id="celsius" />
+      </div>
+      <div id="fah">
+        <label for="fahrenheit">°F</label>
+        <input id="fahrenheit" />
+      </div>
+      <div id="kel">
+        <label for="kelvin">K</label>
+        <input id="kelvin" />
+      </div>
+    </row>
+    <script>
+      const celsiusInput = document.getElementById('celsius');
+      const fahrenheitInput = document.getElementById('fahrenheit');
+      const kelvinInput = document.getElementById('kelvin');
+
+      function atualizarValores(valor, tipo) {
+        if (tipo === 'celsius') {
+          fahrenheitInput.value = ((valor * 9) / 5 + 32).toFixed(2);
+          kelvinInput.value = (valor + 273.15).toFixed(2);
+        } else if (tipo === 'fahrenheit') {
+          celsiusInput.value = (((valor - 32) * 5) / 9).toFixed(2);
+          kelvinInput.value = (((valor - 32) * 5) / 9 + 273.15).toFixed(2);
+        } else if (tipo === 'kelvin') {
+          celsiusInput.value = (valor - 273.15).toFixed(2);
+          fahrenheitInput.value = (((valor - 273.15) * 9) / 5 + 32).toFixed(2);
+        }
+      }
+
+      celsiusInput.addEventListener('input', function () {
+        atualizarValores(parseFloat(celsiusInput.value), 'celsius');
+      });
+
+      fahrenheitInput.addEventListener('input', function () {
+        atualizarValores(parseFloat(fahrenheitInput.value), 'fahrenheit');
+      });
+
+      kelvinInput.addEventListener('input', function () {
+        atualizarValores(parseFloat(kelvinInput.value), 'kelvin');
+      });
+    </script>
+  </body>
+</html>

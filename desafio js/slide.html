@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slide de Imagens</title>
+    <link rel="stylesheet" href="./css/styles.css" />
+  </head>
+  <body>
+    <section id="slide">
+      <img id="imagem" src="./img/1.png" />
+      <button id="btnBw">&#129056; VOLTAR</button>
+      <button id="btnFw">AVANÇAR &#129058;</button>
+    </section>
+    <script>
+      const imagens = [
+        'img/1.png',
+        'img/2.png',
+        'img/3.png',
+        'img/4.png',
+        'img/5.png',
+      ];
+      let index = 0;
+      const imagem = document.getElementById('imagem');
+      const btnFw = document.getElementById('btnFw');
+      const btnBw = document.getElementById('btnBw');
+
+      function mostrarImagem() {
+        imagem.src = imagens[index];
+      }
+
+      btnBw.addEventListener('click', function () {
+        index = (index - 1 + imagens.length) % imagens.length;
+        mostrarImagem();
+      });
+
+      btnFw.addEventListener('click', function () {
+        index = (index + 1) % imagens.length;
+        mostrarImagem();
+      });
+    </script>
+  </body>
+</html>
